@@ -10,4 +10,9 @@
 - Мощный прокси-чекер для запросов
 - Поддержка 2captcha
 
+#### Скриншоты работы:
+![Preview](https://i.imgur.com/tbe7XFC.jpeg)
+![Preview](https://i.imgur.com/ZZGMK75.jpg)
+![Preview](https://i.imgur.com/Wol449t.jpg)
+![Preview](https://i.imgur.com/phnw3H4.jpg)
 ##### Программа не предназначена для брутфорса или взлома чужих аккаунтов, использование ее в корыстных целях запрещено запрещено и не предусмотрено разработчиком.
