@@ -1,0 +1,311 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VkChecker2"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="VkChecker2.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" Background="#FF202124" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown" Loaded="Window_Load" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tb1" HorizontalAlignment="Left" Height="420" Margin="-3,25,-10,0" VerticalAlignment="Top" Width="813" Background="#FF202124" BorderBrush="#FF202124" SelectionChanged="tb1_SelectionChanged" Grid.Row="1">
+            <TabItem Header="TabItem">
+                <Grid Background="#FF202124">
+                    <Grid HorizontalAlignment="Left" Height="371" Margin="12,12,0,0" VerticalAlignment="Top" Width="323" Background="#FF292A2D">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,72,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" x:Name="priority5"  SelectionChanged="priority2_SelectionChanged">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Ручное решение" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Пропускать аккаунт" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,105,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" x:Name="priority6"  SelectionChanged="priority3_SelectionChanged">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Ручное решение" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Пропускать аккаунт" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,105,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" x:Name="cbExample1">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Ручное решение" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Пропускать аккаунт" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <RichTextBox x:Name="AccountsRb" HorizontalAlignment="Left" Height="317" Margin="16,38,0,0" VerticalAlignment="Top" Width="287" Background="#FF333437" Foreground="White" BorderThickness="0" SelectionBrush="#FF494A4E" Padding="4" FontFamily="Arial" FontSize="13" IsTabStop="False" IsReadOnly="True" IsUndoEnabled="False">
+                            <RichTextBox.Resources>
+                                <Style TargetType="{x:Type Paragraph}">
+                                    <Setter Property="Margin" Value="0"/>
+                                    <Setter Property="Padding" Value="0,4,4,1"/>
+                                </Style>
+                            </RichTextBox.Resources>
+                            <FlowDocument/>
+                        </RichTextBox>
+                        <Label Content="Текущая база аккаунтов" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="118" Margin="342,12,0,0" VerticalAlignment="Top" Width="446" Background="#FF292A2D">
+                        <Label Content="Настройки текущей проверки" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                        <TextBox x:Name="ThreadsCountTb" HorizontalAlignment="Left" Height="26" Margin="147,43,0,49" TextWrapping="Wrap" VerticalAlignment="Center" Width="86" Background="#FF1D1D1F" BorderBrush="#FF39393B" Foreground="White" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" IsTabStop="False" SelectionBrush="#FF35363A" Padding="3,0,0,0"/>
+                        <Label Content="Количество потоков" HorizontalAlignment="Left" Margin="11,43,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" Width="137" FontSize="13"/>
+                        <Label x:Name="AccountsInThreadLabel" Content="Аккаунтов в каждом потоке:" HorizontalAlignment="Left" Margin="11,72,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" Width="222" FontSize="13"/>
+                        <Button x:Name="ImportAccountsButton" Content="Импорт из файла" HorizontalAlignment="Left" Margin="250,28,0,0" VerticalAlignment="Top" Width="178" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ImportAccountsButton_Click"/>
+                        <Button x:Name="ImportBufferAccountsButton" Content="Импорт из буфера обмена" HorizontalAlignment="Left" Margin="250,63,0,0" VerticalAlignment="Top" Width="178" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ImportBufferAccountsButton_Click"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="246" Margin="342,137,0,0" VerticalAlignment="Top" Width="446" Background="#FF292A2D">
+                        <Label Content="Лог работы" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                        <RichTextBox x:Name="LogsRb" HorizontalAlignment="Left" Height="186
+" Margin="16,43,0,0" VerticalAlignment="Top" Width="247" Background="#FF333437" Foreground="White" BorderThickness="0" SelectionBrush="#FF494A4E" Padding="0,5,0,0" FontFamily="Arial" FontSize="13" IsTabStop="False" IsUndoEnabled="False" IsReadOnly="True">
+                            <RichTextBox.Resources>
+                                <Style TargetType="{x:Type Paragraph}">
+                                    <Setter Property="Margin" Value="4"/>
+                                </Style>
+                            </RichTextBox.Resources>
+                            <FlowDocument/>
+                        </RichTextBox>
+                        <Button x:Name="StartChecking" Content="Начать проверку" HorizontalAlignment="Left" Margin="270,43,0,0" VerticalAlignment="Top" Width="158" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="StartChecking_Click"/>
+                        <Button x:Name="StopChecking" Content="Остановить" HorizontalAlignment="Left" Margin="270,75,0,0" VerticalAlignment="Top" Width="158" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="StopChecking_Click"/>
+                        <Button x:Name="ClearLogs" Content="Очистить логи" HorizontalAlignment="Left" Margin="270,107,0,0" VerticalAlignment="Top" Width="158" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ClearLogs_Click"/>
+                        <Button x:Name="ExportLogs" Content="Экспорт логов в файл" HorizontalAlignment="Left" Margin="270,139,0,0" VerticalAlignment="Top" Width="158" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ExportLogs_Click"/>
+                        <Label x:Name="CkeckingStatusLabel" Content="Статус: ожидание" HorizontalAlignment="Left" Margin="263,204,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="183" FontSize="13" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" Margin="0,0,9,0" Width="798">
+                    <Grid Background="#FF202124" Height="560">
+                        <Grid HorizontalAlignment="Left" Height="369" Margin="12,187,0,0" VerticalAlignment="Top" Width="769" Background="#FF292A2D">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Информация о валидных аккаунтах" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                            <DataGrid Name="Stats" Height="310" Margin="10,43,0,0" Width="735" Background="#FF333437" BorderThickness="0" Foreground="White" FontFamily="Arial" HorizontalAlignment="Left" VerticalAlignment="Top"
+          EnableRowVirtualization="false" EnableColumnVirtualization="false"
+          CanUserAddRows="False" CanUserReorderColumns="False" IsTabStop="False" IsReadOnly="True" FontWeight="Normal" IsManipulationEnabled="True" VerticalScrollBarVisibility="Hidden">
+                                <DataGrid.Resources>
+                                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                        <Setter Property="Background" Value="#424345" />
+                                        <Setter Property="Padding" Value="10, 5"/>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Login}" Foreground="White" FontFamily="Arial" Header="Логин" IsReadOnly="True" CellStyle="{StaticResource NameCellStyle}"/>
+                                    <DataGridTextColumn Binding="{Binding Password}" Foreground="White" FontFamily="Arial" Header="Пароль" IsReadOnly="True" CellStyle="{StaticResource NameCellStyle}"/>
+                                    <DataGridTextColumn Binding="{Binding Email}" Foreground="White" FontFamily="Arial" Header="Почта" IsReadOnly="True" CellStyle="{StaticResource NameCellStyle}"/>
+                                    <DataGridTextColumn Binding="{Binding PhoneNumber}" Foreground="White" FontFamily="Arial" Header="Номер тел." IsReadOnly="True" CellStyle="{StaticResource NameCellStyle}"/>
+                                    <DataGridTextColumn Binding="{Binding AdditionalInfoStr}" Foreground="White" FontFamily="Arial" Header="Доп. поля" IsReadOnly="True" CellStyle="{StaticResource NameCellStyle}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Rectangle Fill="#FF292A2D" HorizontalAlignment="Left" Height="318" Margin="9,43,0,0" Stroke="#FF292A2D" VerticalAlignment="Top" Width="7"/>
+                            <Rectangle Fill="#FF424345" HorizontalAlignment="Left" Height="24" Margin="16,43,0,0" Stroke="Black" VerticalAlignment="Top" Width="5" StrokeThickness="0"/>
+                            <Rectangle Fill="#FF333437" HorizontalAlignment="Left" Height="286" Margin="16,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="5" StrokeThickness="0"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Height="168" Margin="12,12,0,0" VerticalAlignment="Top" Width="293" Background="#FF292A2D">
+                            <Label Content="Статистика проверенной базы" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27" Padding="5"/>
+                            <Label x:Name="DataBaseStatsLabel" Content="Всего аккаунтов:&#xA;Валидных:&#xA;Невалидных:&#xA;Процент валидности:" HorizontalAlignment="Left" Margin="11,35,0,0" VerticalAlignment="Top" Foreground="White" Height="87" Width="212" FontSize="13"/>
+                            <Button x:Name="ImportDataBase" Content="Импорт базы" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="132" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ImportDataBase_Click"/>
+                            <Button x:Name="ExportDataBase" Content="Экспорт базы" HorizontalAlignment="Left" Margin="147,123,0,0" VerticalAlignment="Top" Width="132" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="ExportDataBase_Click"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Left" Height="168" Margin="312,12,0,0" VerticalAlignment="Top" Width="469" Background="#FF292A2D">
+                            <Label Content="Используемые ресурсы" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                            <Label x:Name="Resources1Label" Content="Количество потоков:&#xA;Аккаунтов в потоке:&#xA;&#xA;&#xA;&#xA;Время проверки:" HorizontalAlignment="Left" Margin="11,35,0,0" VerticalAlignment="Top" Foreground="White" Height="133" Width="212" FontSize="13"/>
+                            <Label x:Name="Resources2Label" Content="Использовано прокси:&#xA;Частота смены:&#xA;&#xA;Использовано токенов RuCaptcha:&#xA;Неверных разгадываний:&#xA;Частота использования:" HorizontalAlignment="Left" Margin="200,11,0,0" VerticalAlignment="Top" Foreground="White" Height="147" Width="259" FontSize="13"/>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55">
+                <Grid Background="#FF202124" Margin="0,0,9,0">
+                    <Grid HorizontalAlignment="Left" Height="371" Margin="12,12,0,0" VerticalAlignment="Top" Width="776" Background="#FF292A2D">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Используемые методы обхода Captcha" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="267" FontSize="14" FontWeight="Bold" Height="27"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,39,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Name="priority1" SelectionChanged="priority1_SelectionChanged">
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <Button Content="Добавить метод" Name="AddMethod" HorizontalAlignment="Left" Margin="16,72,0,0" VerticalAlignment="Top" Width="203
+                                " Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="Button_Click_4"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,72,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" Name="priority2"  SelectionChanged="priority2_SelectionChanged">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,105,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" Name="priority3"  SelectionChanged="priority3_SelectionChanged">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <ComboBox HorizontalAlignment="Left" Margin="16,105,0,0" VerticalAlignment="Top" Width="203" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand" Visibility="Hidden" Name="cbExample">
+                            <ComboBoxItem Content="Удалить" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать RuCaptcha" HorizontalAlignment="Left" Width="203"/>
+                            <ComboBoxItem Content="Использовать Proxy" HorizontalAlignment="Left" Width="203"/>
+                        </ComboBox>
+                        <Label Content="Настройки RuCaptcha" HorizontalAlignment="Left" Margin="12,158,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="156" FontSize="14" FontWeight="Bold" Height="27"/>
+                        <TextBox x:Name="RuCaptchaTb" HorizontalAlignment="Left" Height="30" Margin="16,191,0,150" TextWrapping="Wrap" VerticalAlignment="Center" Width="277" Background="#FF1D1D1F" BorderBrush="#FF39393B" Foreground="White" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" IsTabStop="False" SelectionBrush="#FF35363A" Padding="3,0,0,0"/>
+                        <Label x:Name="BalanceInfoLb" Content="Текущий баланс: 0 рублей" HorizontalAlignment="Left" Margin="11,219,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="282" FontFamily="Arial" PreviewMouseDown="BalanceInfoLb_PreviewMouseDown" Cursor="Hand"/>
+                        <RichTextBox x:Name="RuCaptchaRb" HorizontalAlignment="Left" Height="105" Margin="16,251,0,0" VerticalAlignment="Top" Width="277" Background="#FF1D1D1F" Foreground="White" BorderThickness="0" SelectionBrush="#FF35363A" Padding="0,5,0,0" FontFamily="Arial" FontSize="13" IsTabStop="False" IsReadOnly="True">
+                            <RichTextBox.Resources>
+                                <Style TargetType="{x:Type Paragraph}">
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                            </RichTextBox.Resources>
+                            <FlowDocument/>
+                        </RichTextBox>
+                        <RichTextBox x:Name="ProxyRTB" HorizontalAlignment="Left" Height="317" Margin="363,39,0,0" VerticalAlignment="Top" Width="237" Background="#FF1D1D1F" Foreground="White" BorderThickness="0" SelectionBrush="#FF35363A" Padding="0,5,0,0" FontFamily="Arial" FontSize="13" IsTabStop="False">
+                            <RichTextBox.Resources>
+                                <Style TargetType="{x:Type Paragraph}">
+                                    <Setter Property="Margin" Value="4"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Style>
+                            </RichTextBox.Resources>
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text=""/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                        <Label Content="Настройки прокси-сервера" HorizontalAlignment="Left" Margin="358,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="242" FontSize="14" FontWeight="Bold" Height="27"/>
+                        <Button Content="Загрузить из файла" x:Name="LoadProxyFromFile" HorizontalAlignment="Left" Margin="605,39,0,0" VerticalAlignment="Top" Width="161" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="LoadProxyFromFile_Click"/>
+                        <Button Content="Отсеить невалид" x:Name="FilterButton" HorizontalAlignment="Left" Margin="605,73,0,0" VerticalAlignment="Top" Width="161" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="27" FontFamily="Arial" FontSize="13" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="FilterButton_Click"/>
+                        <ProgressBar x:Name="ProxyPb" HorizontalAlignment="Left" Height="18" Margin="605,105,0,0" VerticalAlignment="Top" Width="161" Value="64" Foreground="#FF595B5D" Background="#FF1D1D1F" BorderThickness="0"/>
+                        <Label x:Name="ProxyInfoTotal" Content="Проверено: 1/1002" HorizontalAlignment="Left" Margin="605,125,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="161" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Label x:Name="ProxyInfoValid" Content="Валидных: 0" HorizontalAlignment="Left" Margin="605,145,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="161" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="55">
+                <Grid Background="#FF202124" Margin="0,0,9,0">
+                    <Grid HorizontalAlignment="Left" Height="371" Margin="12,12,0,0" VerticalAlignment="Top" Width="517" Background="#FF292A2D">
+                        <TextBox x:Name="PathTextBox" HorizontalAlignment="Left" Height="30" Margin="16,290,0,51" TextWrapping="Wrap" Text="C:\UnoChecker\Logs" VerticalAlignment="Center" Width="277" Background="#FF1D1D1F" BorderBrush="#FF39393B" Foreground="White" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" IsTabStop="False" SelectionBrush="#FF35363A" Padding="3,0,0,0" HorizontalScrollBarVisibility="Auto"/>
+                        <Label Content="Путь сохранания логов" HorizontalAlignment="Left" Margin="11,263,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="160" FontSize="14" FontWeight="Bold"/>
+                        <ToggleButton x:Name="FilterCb" Content="Фильтровать невалидные аккаунты" HorizontalAlignment="Left" Margin="16,320,0,0" VerticalAlignment="Top" Width="277" Height="30" BorderThickness="0" Foreground="White" FontFamily="Arial" FontSize="13" Cursor="Hand" IsTabStop="False">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Height="20" Width="20" CornerRadius="1" BorderThickness="0" Background="#FF1D1D1F" HorizontalAlignment="Left">
+                                            <Border.Style>
+                                                <Style TargetType="{x:Type Border}">
+                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="BorderBrush" Value="Red"/>
+                                                        </Trigger>
+                                                        <EventTrigger RoutedEvent="UIElement.PreviewMouseDown">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="Blue"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                        <EventTrigger RoutedEvent="UIElement.PreviewMouseUp">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ColorAnimation Storyboard.TargetProperty="BorderDrush.Color" Duration="0:0:0.100" To="Red"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Image Margin="3">
+                                                <Image.Style>
+                                                    <Style>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}" Value="True">
+                                                                <Setter Property="Image.Source" Value="check.png"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                        <ContentPresenter Margin="7, 0, 0, 0" Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <RadioButton x:Name="Rb1" Content="JSON" HorizontalAlignment="Left" Margin="16,40,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="13" IsChecked="False"/>
+                        <Label Content="Формат записи логов" HorizontalAlignment="Left" Margin="11,11,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="160" FontSize="14" FontWeight="Bold"/>
+                        <RadioButton x:Name="Rb2" Content="XML" HorizontalAlignment="Left" Margin="16,63,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="13"/>
+                        <RadioButton x:Name="Rb3" Content="Стандартный текстовый" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="13"/>
+                        <ListBox x:Name="FieldsLb" HorizontalAlignment="Left" Height="139" Margin="283,39,0,0" VerticalAlignment="Top" Width="221" SelectionMode="Multiple" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource SimpleListBoxItem}" Background="#FF38393B" Foreground="White" BorderThickness="0" FontFamily="Arial" Cursor="Hand" FontSize="13">
+                            <ListBoxItem Content="Ссылка на страницу" Margin="0"/>
+                            <ListBoxItem Content="Имя и фамилия" Margin="0"/>
+                            <ListBoxItem Content="Пол (Муж./Жен.)" Margin="0"/>
+                            <ListBoxItem Content="Наличие фотографий" Margin="0"/>
+                            <ListBoxItem Content="Страна и город проживания" Margin="0"/>
+                            <ListBoxItem Content="Токен доступа" Margin="0"/>
+                            <ListBoxItem Content="Блокировка аккаунта" Margin="0"/>
+                            <ListBoxItem Content="Количество друзей" Margin="0"/>
+                            <ListBoxItem Content="Количество подписчиков" Margin="0"/>
+                            <ListBoxItem Content="Администрируемые сообщества" Margin="0"/>
+                            <ListBoxItem Content="Тип ошибки при проверке" Margin="0"/>
+                        </ListBox>
+                        <Label Content="Дополнительные поля проверки" HorizontalAlignment="Left" Margin="279,12,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="224" FontSize="14" FontWeight="Bold"/>
+                        <Label Content="Сервис авторизации" HorizontalAlignment="Left" Margin="11,142,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" Width="173" FontSize="14" FontWeight="Bold"/>
+                        <ComboBox x:Name="AuthServiceCb" HorizontalAlignment="Left" Margin="16,169,0,0" VerticalAlignment="Top" Width="187" Style="{StaticResource ComboBoxFlatStyle}" FontFamily="Arial" Height="27" FontSize="14" Cursor="Hand">
+                            <ComboBoxItem Content="Случайный" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="VkAdmin" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="VkAdmin (iOS)" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Vk Live" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Vk Live Android" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Prisma" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Instagram" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Kate Mobile" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="VFeed" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Vk Me" HorizontalAlignment="Left" Width="187"/>
+                            <ComboBoxItem Content="Vk API" HorizontalAlignment="Left" Width="187"/>
+                        </ComboBox>
+                        <TextBox x:Name="OwnServiceTb" HorizontalAlignment="Left" Height="26" Margin="93,199,0,146" TextWrapping="Wrap" VerticalAlignment="Center" Width="110" Background="#FF1D1D1F" BorderBrush="#FF39393B" Foreground="White" BorderThickness="0" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" IsTabStop="False" SelectionBrush="#FF35363A" Padding="3,0,0,0"/>
+                        <Label Content="Свой AppId" HorizontalAlignment="Left" Margin="11,199,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" Width="97" FontSize="13"/>
+                        <Button Content="Обзор.." Name="OpenButton" HorizontalAlignment="Left" Margin="293,290,0,0" VerticalAlignment="Top" Width="54" Background="#FF363738" BorderBrush="#FF333435" Foreground="White" BorderThickness="0" Height="30" FontFamily="Panton" Style="{StaticResource ButtonFlat}" IsTabStop="False" Click="OpenButton_Click"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="371" Margin="535,12,0,0" VerticalAlignment="Top" Width="253" Background="#FF292A2D">
+                        <Label Content="Новости проекта" HorizontalAlignment="Left" Margin="28,6,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" FontSize="14"/>
+                        <Image HorizontalAlignment="Left" Height="20" Margin="10,8,0,0" VerticalAlignment="Top" Width="20" Source="news.png"/>
+                        <RichTextBox x:Name="NewsRichTextBox" HorizontalAlignment="Left" Height="324" Margin="10,38,0,0" VerticalAlignment="Top" Width="233" Background="#FF292A2D" Foreground="White" BorderBrush="#FF292A2D" FontFamily="Arial" IsReadOnly="True" IsTabStop="False" IsUndoEnabled="False" BorderThickness="0" FontSize="13" SelectionBrush="#FF35363A">
+                            <RichTextBox.Resources>
+                                <Style TargetType="{x:Type Paragraph}">
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                            </RichTextBox.Resources>
+                            <FlowDocument/>
+                        </RichTextBox>
+                        <Label x:Name="VersionLabel" Content="V1.0" Margin="0,7,9,0" VerticalAlignment="Top" Foreground="White" FontFamily="Panton" FontSize="13" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="79" Cursor="Hand" PreviewMouseDown="VersionLabel_Click"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="800" RenderTransformOrigin="0.5,0.5" Background="#FF262729" Grid.RowSpan="2">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="5" Direction="-50" RenderingBias="Quality" ShadowDepth="1" Opacity="0.5"/>
+            </Grid.Effect>
+            <Image HorizontalAlignment="Left" Height="25" Margin="765,12,0,0" VerticalAlignment="Top" Width="25" Source="close.png" Cursor="Hand" MouseLeftButtonDown="Image1_MouseLeftButtonDown"/>
+            <Image HorizontalAlignment="Left" Height="23" Margin="20,16,0,0" VerticalAlignment="Top" Width="145" Source="logo.png"/>
+            <Button Content="Чекер" HorizontalAlignment="Left" Margin="240,9,0,7" VerticalAlignment="Center" Width="65" Height="34" Background="#FF262729" Foreground="White" FontFamily="Panton" FontSize="16" BorderBrush="#FF262729" VerticalContentAlignment="Center" Click="Button_Click" IsTabStop="False" Style="{StaticResource ButtonHeader}"/>
+            <Button Content="Статистика" HorizontalAlignment="Left" Margin="310,9,0,7" VerticalAlignment="Center" Width="110" Height="34" Background="#FF262729" Foreground="White" FontFamily="Panton" FontSize="16" BorderBrush="#FF262729" VerticalContentAlignment="Center" Click="Button_Click_1" IsTabStop="False" Style="{StaticResource ButtonHeader}"/>
+            <Button Content="Прокси, Captcha" HorizontalAlignment="Left" Margin="425,9,0,7" VerticalAlignment="Center" Width="145" Height="34" Background="#FF262729" Foreground="White" FontFamily="Panton" FontSize="16" BorderBrush="#FF262729" VerticalContentAlignment="Center" Click="Button_Click_2" IsTabStop="False" Style="{StaticResource ButtonHeader}"/>
+            <Button Content="Настройки" HorizontalAlignment="Left" Margin="575,9,0,7" VerticalAlignment="Center" Width="105" Height="34" Background="#FF262729" Foreground="White" FontFamily="Panton" FontSize="16" BorderBrush="#FF262729" VerticalContentAlignment="Center" Click="Button_Click_3" IsTabStop="False" Style="{StaticResource ButtonHeader}"/>
+            <Image HorizontalAlignment="Left" Height="25" Margin="735,12,0,0" VerticalAlignment="Top" Width="25" Source="minimize.png" Cursor="Hand" MouseLeftButtonDown="Image2_MouseLeftButtonDown"/>
+
+        </Grid>
+    </Grid>
+</Window>
